@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My love ✨️</title>
+<title>My love ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
@@ -23,7 +23,7 @@ body {
   overflow: hidden;
 }
 
-/* Section Base - Now occupying the full viewport */
+/* Section Base */
 .section {
   position: fixed;
   top: 0;
@@ -37,10 +37,10 @@ body {
   text-align: center;
   padding: 20px;
   transition: opacity 2s ease, transform 2s cubic-bezier(0.25, 1, 0.5, 1);
-  overflow-y: auto; /* Allows scrolling if content is too tall on small screens */
+  overflow-y: auto; 
 }
 
-/* 🎬 BROWN & CREAM INTRO WITH FULL SCREEN STRIPES */
+/* 🎬 BROWN & CREAM INTRO */
 #intro {
   background: repeating-linear-gradient(
     45deg,
@@ -52,7 +52,7 @@ body {
   z-index: 10;
 }
 
-/* LUXURY GLASS EFFECT - Constrained width for readable text on wide screens */
+/* LUXURY GLASS EFFECT */
 .glass {
   backdrop-filter: blur(15px);
   background: rgba(15, 5, 5, 0.9);
@@ -67,7 +67,7 @@ body {
 /* TYPOGRAPHY */
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 8vw, 3.5rem); /* Responsive font sizing */
+  font-size: clamp(2rem, 8vw, 3.5rem); 
   font-style: italic;
   color: #ffcccc;
   text-shadow: 0 0 25px rgba(255, 51, 51, 0.4);
@@ -182,20 +182,20 @@ button:hover {
   padding: 10px 20px 20px 20px;
   width: 100%;
   max-width: 800px;
-  justify-content: center; /* Center images on desktop */
+  justify-content: center; 
   scrollbar-width: none;
 }
 .gallery::-webkit-scrollbar {
   display: none;
 }
 
-/* For mobile, don't center so they can scroll */
 @media (max-width: 600px) {
     .gallery {
         justify-content: flex-start;
     }
 }
 
+/* Images */
 .gallery img {
   height: clamp(180px, 30vh, 250px);
   width: clamp(120px, 20vh, 160px);
@@ -203,18 +203,17 @@ button:hover {
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.6);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  filter: grayscale(10%) contrast(105%);
 }
 
 /* FLOATING EMOJIS */
 .emoji-particle {
   position: fixed;
-  bottom: -100px; /* Start below the screen */
+  bottom: -100px; 
   pointer-events: none;
   animation: floatUp linear forwards;
   opacity: 0;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-  z-index: 100; /* Float on top of everything */
+  z-index: 100; 
 }
 
 @keyframes floatUp {
@@ -230,7 +229,7 @@ button:hover {
 
   <div id="intro" class="section">
     <div class="glass">
-      <h2 class="fade">Deewaana Deewaana...</h2>
+      <h2 class="fade">My love...</h2>
       <p class="fade" style="margin-bottom: 15px;">I'm waiting for your answer.</p>
       
       <input type="text" id="nameInput" class="name-input fade" placeholder="Wait, what is your name again?" autocomplete="off">
@@ -240,13 +239,13 @@ button:hover {
   </div>
 
   <div id="birthday" class="section">
-    <h1 class="fade" id="nameText">My Deewaana</h1>
+    <h1 class="fade" id="nameText">My love</h1>
     <p class="fade">✨ This moment is crafted entirely for you. ✨</p>
 
     <div class="gallery fade">
-      <img src="https://via.placeholder.com/140x220/1a0505/ffcccc?text=Photo+1" alt="Memory 1">
-      <img src="https://via.placeholder.com/140x220/2a0000/ffcccc?text=Photo+2" alt="Memory 2">
-      <img src="https://via.placeholder.com/140x220/1a0505/ffcccc?text=Photo+3" alt="Memory 3">
+      <img src="82131.jpg" alt="Memory 1 - Flowers">
+      <img src="82129.jpg" alt="Memory 2 - Cat">
+      <img src="82130.jpg" alt="Memory 3 - Florks">
     </div>
 
     <p class="fade wish-text" style="margin-top: 35px;">Wishing you a world filled with endless laughter, boundless success, and everything your beautiful heart desires.</p>
@@ -254,33 +253,28 @@ button:hover {
     <p class="fade">You deserve every beautiful thing in this world. 🤍</p>
   </div>
 
-<audio id="music" src="song.mp3"></audio>
+<audio id="music" src="YOUR_NEW_SONG.mp3"></audio>
 
 <script>
-// Fade intro text on load
 window.onload = () => {
   setTimeout(() => {
     document.querySelectorAll("#intro .fade").forEach((el, index) => {
-      setTimeout(() => el.classList.add("show"), index * 500); // Slower stagger for dramatic effect
+      setTimeout(() => el.classList.add("show"), index * 500); 
     });
   }, 500);
 };
 
-// Start transition
 function start() {
   const nameValue = document.getElementById("nameInput").value.trim();
   
-  // Update text if name provided, else defaults to 'My Deewaana'
   if (nameValue) {
-    document.getElementById("nameText").innerText = "Deewaana " + nameValue;
+    document.getElementById("nameText").innerText = "My love, " + nameValue;
   }
 
-  // Play music - ensure the filename below matches your file exactly
   const audio = document.getElementById("music");
   audio.volume = 0.8;
   audio.play().catch(e => console.error("Audio playback failed. Make sure the filename matches.", e));
 
-  // Trigger full screen cinematic transition
   const intro = document.getElementById("intro");
   const birthday = document.getElementById("birthday");
 
@@ -289,46 +283,37 @@ function start() {
   
   birthday.classList.add("active");
 
-  // Fade in birthday elements sequentially
   setTimeout(() => {
     document.querySelectorAll("#birthday .fade").forEach((el, index) => {
       setTimeout(() => el.classList.add("show"), index * 600);
     });
     startEffects();
-  }, 1000); // Delay fade-in until transition almost done
+  }, 1000); 
 }
 
-// Full Screen Emoji Effects
 function startEffects() {
-  // Your specific emoji list: ✨️💅🍻🥳🎉🍷🥂🎁🎂🍰
   const emojis = ['✨️', '💅', '🍻', '🥳', '🎉', '🍷', '🥂', '🎁', '🎂', '🍰'];
   
   setInterval(() => {
     let p = document.createElement("div");
     p.className = "emoji-particle";
     
-    // Pick a random emoji from your list
     p.innerText = emojis[Math.floor(Math.random() * emojis.length)];
     
-    // Randomize size between 25px and 45px for full screen presence
     let size = Math.random() * 20 + 25; 
     p.style.fontSize = size + "px";
     
-    // Randomize horizontal starting position across full viewport width
     p.style.left = Math.random() * 100 + "vw";
     
-    // Randomize float duration (between 5s and 9s) for natural look
     let duration = Math.random() * 4 + 5; 
     p.style.animationDuration = duration + "s";
     
-    // Add slightly different animation delay for better spacing
     p.style.animationDelay = (Math.random() * 2) + "s";
 
     document.body.appendChild(p);
     
-    // Clean up DOM after animation completes to keep performance smooth
     setTimeout(() => p.remove(), (duration + 2) * 1000);
-  }, 180); // Spawns frequently to fill full screen without lagging
+  }, 180); 
 }
 </script>
 
