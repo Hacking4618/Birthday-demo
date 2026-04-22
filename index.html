@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ❤️</title>
+<title>Deewaana Deewaana ✨️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
@@ -18,95 +18,82 @@ body {
   font-family: 'Poppins', sans-serif;
   background: #000;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  overflow: hidden;
-}
-
-/* 📱 9:16 Mobile-First Container */
-.mobile-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
+  width: 100vw;
   height: 100vh;
-  max-height: 800px;
-  aspect-ratio: 9/16;
-  background: #050505;
   overflow: hidden;
-  box-shadow: 0 0 40px rgba(138, 3, 3, 0.15);
 }
 
-/* Section Base */
+/* Section Base - Now occupying the full viewport */
 .section {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
-  padding: 30px;
-  transition: opacity 1.5s ease, transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+  padding: 20px;
+  transition: opacity 2s ease, transform 2s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow-y: auto; /* Allows scrolling if content is too tall on small screens */
 }
 
-/* 🎬 INTRO WITH BROWN & CREAM STRIPES */
+/* 🎬 BROWN & CREAM INTRO WITH FULL SCREEN STRIPES */
 #intro {
   background: repeating-linear-gradient(
     45deg,
     #f5f0e6,
-    #f5f0e6 25px,
-    #6b4f3b 25px,
-    #6b4f3b 50px
+    #f5f0e6 40px,
+    #6b4f3b 40px,
+    #6b4f3b 80px
   );
   z-index: 10;
 }
 
-/* LUXURY GLASS EFFECT */
+/* LUXURY GLASS EFFECT - Constrained width for readable text on wide screens */
 .glass {
   backdrop-filter: blur(15px);
-  background: rgba(15, 5, 5, 0.85); /* Made slightly darker so text is readable over the bright cream */
-  padding: 40px 25px;
-  border-radius: 16px;
+  background: rgba(15, 5, 5, 0.9);
+  padding: 60px 30px;
+  border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.8);
   width: 90%;
+  max-width: 500px;
 }
 
 /* TYPOGRAPHY */
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
+  font-size: clamp(2rem, 8vw, 3.5rem); /* Responsive font sizing */
   font-style: italic;
   color: #ffcccc;
-  text-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
+  text-shadow: 0 0 25px rgba(255, 51, 51, 0.4);
   line-height: 1.2;
 }
 
 h2 {
   font-family: 'Playfair Display', serif;
   font-weight: 500;
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  margin-bottom: 20px;
   color: #e6e6e6;
 }
 
 p {
-  margin-top: 15px;
-  font-size: 0.95rem;
+  margin-top: 20px;
+  font-size: 1rem;
   color: #a3a3a3;
   letter-spacing: 0.5px;
+  max-width: 600px;
 }
 
 .wish-text {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #cccccc;
-  margin-top: 10px;
+  margin-top: 15px;
   font-style: italic;
 }
 
@@ -115,41 +102,43 @@ p {
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid #6b4f3b;
+  border-bottom: 2px solid #6b4f3b;
   color: white;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-family: 'Playfair Display', serif;
   padding: 10px;
-  margin-top: 20px;
-  margin-bottom: 25px;
+  margin-top: 30px;
+  margin-bottom: 40px;
   outline: none;
   transition: 0.3s;
 }
 
 .name-input:focus {
-  border-bottom: 1px solid #ffcccc;
+  border-bottom: 2px solid #ffcccc;
 }
 
 /* GLOWING BUTTON */
 button {
-  padding: 14px 35px;
-  border: 1px solid #6b4f3b;
-  border-radius: 30px;
+  padding: 18px 50px;
+  border: 2px solid #6b4f3b;
+  border-radius: 40px;
   background: transparent;
   color: #ffcccc;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.5s ease;
   text-transform: uppercase;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  outline: none;
 }
 
 button:hover {
   background: #6b4f3b;
   color: #fff;
+  box-shadow: 0 0 20px rgba(107, 79, 59, 0.5);
 }
 
 /* BIRTHDAY SECTION WITH DARK DIAGONAL STRIPES */
@@ -157,11 +146,11 @@ button:hover {
   background: repeating-linear-gradient(
     45deg,
     #050505,
-    #050505 25px,
-    #1a0505 25px,
-    #1a0505 50px
+    #050505 40px,
+    #1a0505 40px,
+    #1a0505 80px
   );
-  transform: translateY(20px) scale(0.95);
+  transform: translateY(30px) scale(0.98);
   opacity: 0;
   pointer-events: none;
   z-index: 5;
@@ -176,8 +165,8 @@ button:hover {
 /* FADE ANIMATION */
 .fade {
   opacity: 0;
-  transform: translateY(15px);
-  transition: 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: translateY(20px);
+  transition: 1.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .show {
   opacity: 1;
@@ -187,63 +176,72 @@ button:hover {
 /* VERTICAL GALLERY */
 .gallery {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   overflow-x: auto;
-  margin-top: 25px;
-  padding-bottom: 10px;
+  margin-top: 40px;
+  padding: 10px 20px 20px 20px;
   width: 100%;
+  max-width: 800px;
+  justify-content: center; /* Center images on desktop */
   scrollbar-width: none;
 }
 .gallery::-webkit-scrollbar {
   display: none;
 }
 
+/* For mobile, don't center so they can scroll */
+@media (max-width: 600px) {
+    .gallery {
+        justify-content: flex-start;
+    }
+}
+
 .gallery img {
-  height: 220px;
-  width: 140px;
+  height: clamp(180px, 30vh, 250px);
+  width: clamp(120px, 20vh, 160px);
   object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.6);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  filter: grayscale(20%) contrast(110%);
+  filter: grayscale(10%) contrast(105%);
 }
 
 /* FLOATING EMOJIS */
 .emoji-particle {
-  position: absolute;
+  position: fixed;
+  bottom: -100px; /* Start below the screen */
   pointer-events: none;
   animation: floatUp linear forwards;
   opacity: 0;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  z-index: 100; /* Float on top of everything */
 }
 
 @keyframes floatUp {
-  0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.9; }
-  90% { opacity: 0.9; }
-  100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
+  0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-110vh) scale(1.5) rotate(360deg); opacity: 0; }
 }
 
 </style>
 </head>
 <body>
 
-<div class="mobile-wrapper">
-  
   <div id="intro" class="section">
     <div class="glass">
-      <h2 class="fade">Close your eyes...</h2>
-      <p class="fade" style="margin-bottom: 10px;">This is something special.</p>
+      <h2 class="fade">Deewaana Deewaana...</h2>
+      <p class="fade" style="margin-bottom: 15px;">I'm waiting for your answer.</p>
       
-      <input type="text" id="nameInput" class="name-input fade" placeholder="Who is this for?" autocomplete="off">
+      <input type="text" id="nameInput" class="name-input fade" placeholder="Wait, what is your name again?" autocomplete="off">
       
-      <button class="fade" onclick="start()" style="margin-top: 10px;">Tap to Open</button>
+      <button class="fade" onclick="start()" style="margin-top: 15px;">Open Your Gift</button>
     </div>
   </div>
 
   <div id="birthday" class="section">
-    <h1 class="fade" id="nameText">Happy Birthday</h1>
-    <p class="fade">A moment crafted entirely for you. ✨</p>
+    <h1 class="fade" id="nameText">My Deewaana</h1>
+    <p class="fade">✨ This moment is crafted entirely for you. ✨</p>
 
     <div class="gallery fade">
       <img src="https://via.placeholder.com/140x220/1a0505/ffcccc?text=Photo+1" alt="Memory 1">
@@ -251,40 +249,38 @@ button:hover {
       <img src="https://via.placeholder.com/140x220/1a0505/ffcccc?text=Photo+3" alt="Memory 3">
     </div>
 
-    <p class="fade wish-text" style="margin-top: 25px;">Wishing you a year filled with success, laughter, and everything you desire.</p>
-    <p class="fade wish-text">May this next chapter bring you endless joy and unforgettable memories.</p>
+    <p class="fade wish-text" style="margin-top: 35px;">Wishing you a world filled with endless laughter, boundless success, and everything your beautiful heart desires.</p>
+    <p class="fade wish-text">I hope this surprise brought a smile to your face. Let's celebrate! 🥂</p>
     <p class="fade">You deserve every beautiful thing in this world. 🤍</p>
   </div>
 
-</div>
-
-<audio id="music" src="https://www.myinstants.com/media/sounds/happy-birthday-to-you.mp3"></audio>
+<audio id="music" src="Deewaana Deewaana.mp3"></audio>
 
 <script>
 // Fade intro text on load
 window.onload = () => {
   setTimeout(() => {
     document.querySelectorAll("#intro .fade").forEach((el, index) => {
-      setTimeout(() => el.classList.add("show"), index * 300);
+      setTimeout(() => el.classList.add("show"), index * 500); // Slower stagger for dramatic effect
     });
-  }, 300);
+  }, 500);
 };
 
 // Start transition
 function start() {
   const nameValue = document.getElementById("nameInput").value.trim();
   
-  // Update name if provided
+  // Update text if name provided, else defaults to 'My Deewaana'
   if (nameValue) {
-    document.getElementById("nameText").innerText = "Happy Birthday, " + nameValue;
+    document.getElementById("nameText").innerText = "Deewaana " + nameValue;
   }
 
-  // Play birthday music
+  // Play music - ensure the filename below matches your file exactly
   const audio = document.getElementById("music");
-  audio.volume = 0.7;
-  audio.play().catch(e => console.log("Audio autoplay blocked by browser"));
+  audio.volume = 0.8;
+  audio.play().catch(e => console.error("Audio playback failed. Make sure the filename matches.", e));
 
-  // Trigger cinematic transition
+  // Trigger full screen cinematic transition
   const intro = document.getElementById("intro");
   const birthday = document.getElementById("birthday");
 
@@ -293,37 +289,46 @@ function start() {
   
   birthday.classList.add("active");
 
-  // Fade in birthday elements
+  // Fade in birthday elements sequentially
   setTimeout(() => {
     document.querySelectorAll("#birthday .fade").forEach((el, index) => {
-      setTimeout(() => el.classList.add("show"), index * 400);
+      setTimeout(() => el.classList.add("show"), index * 600);
     });
     startEffects();
-  }, 800);
+  }, 1000); // Delay fade-in until transition almost done
 }
 
-// Cinematic Emoji Effects
+// Full Screen Emoji Effects
 function startEffects() {
-  const emojis = ['🎉', '🎂', '🥳', '🎁', '🎈', '✨', '🥂', '🎊'];
+  // Your specific emoji list: ✨️💅🍻🥳🎉🍷🥂🎁🎂🍰
+  const emojis = ['✨️', '💅', '🍻', '🥳', '🎉', '🍷', '🥂', '🎁', '🎂', '🍰'];
   
   setInterval(() => {
     let p = document.createElement("div");
     p.className = "emoji-particle";
     
+    // Pick a random emoji from your list
     p.innerText = emojis[Math.floor(Math.random() * emojis.length)];
     
-    let size = Math.random() * 15 + 20; 
+    // Randomize size between 25px and 45px for full screen presence
+    let size = Math.random() * 20 + 25; 
     p.style.fontSize = size + "px";
     
-    p.style.left = Math.random() * 100 + "%";
+    // Randomize horizontal starting position across full viewport width
+    p.style.left = Math.random() * 100 + "vw";
     
-    let duration = Math.random() * 3 + 4; 
+    // Randomize float duration (between 5s and 9s) for natural look
+    let duration = Math.random() * 4 + 5; 
     p.style.animationDuration = duration + "s";
     
-    document.querySelector(".mobile-wrapper").appendChild(p);
+    // Add slightly different animation delay for better spacing
+    p.style.animationDelay = (Math.random() * 2) + "s";
+
+    document.body.appendChild(p);
     
-    setTimeout(() => p.remove(), duration * 1000);
-  }, 250);
+    // Clean up DOM after animation completes to keep performance smooth
+    setTimeout(() => p.remove(), (duration + 2) * 1000);
+  }, 180); // Spawns frequently to fill full screen without lagging
 }
 </script>
 
