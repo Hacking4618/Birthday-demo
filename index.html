@@ -3,42 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ❤️</title>
+<title>Happy Birthday ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
   background: black;
   color: white;
-  text-align: center;
-  overflow-x: hidden;
 }
 
 /* Sections */
 .section {
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: 1s;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
 }
 
-/* Apology Section */
-#apology {
-  background: black;
+/* Intro (Luxury Feel) */
+#intro {
+  background: linear-gradient(135deg, black, #3e2c23);
 }
 
 button {
   padding: 12px 25px;
-  border: none;
   background: #6b4f3b;
   color: white;
-  font-size: 16px;
+  border: none;
   border-radius: 25px;
   cursor: pointer;
-  margin-top: 20px;
 }
 
 /* Birthday Section */
@@ -49,95 +49,117 @@ button {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
 }
 
+/* Gallery */
+.gallery {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.gallery img {
+  height: 200px;
+  border-radius: 15px;
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 20px;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  to {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
+
+/* Fade animation */
 .fade {
   opacity: 0;
   transition: 1s;
 }
-
 .show {
   opacity: 1;
-}
-
-/* Confetti */
-.confetti {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: white;
-  top: -10px;
-  animation: fall 5s linear infinite;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(100vh);
-  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 💔 Apology Section -->
-<div id="apology" class="section">
-  <h2 id="text1"></h2>
-  <h2 id="text2"></h2>
-  <h2 id="text3"></h2>
+<!-- 🎬 Intro -->
+<div id="intro" class="section">
+  <h2 class="fade">Today is not just another day...</h2>
+  <h2 class="fade">It’s about someone special ❤️</h2>
 
-  <button onclick="showBirthday()">Please Click...</button>
+  <button onclick="startBirthday()">Tap to Continue</button>
 </div>
 
-<!-- 🎂 Birthday Section -->
+<!-- 🎂 Birthday -->
 <div id="birthday" class="section">
-  <h1 class="fade" id="bdayText">Happy Birthday ❤️</h1>
-  <p class="fade">Even if I messed up… today is all about you.</p>
+  <h1 class="fade" id="nameText">Happy Birthday ❤️</h1>
+  <p class="fade">May your day be filled with love, smiles, and happiness.</p>
+
+  <!-- Gallery -->
+  <div class="gallery fade">
+    <img src="https://via.placeholder.com/200">
+    <img src="https://via.placeholder.com/200">
+    <img src="https://via.placeholder.com/200">
+  </div>
+
+  <p class="fade">You are truly special 💖</p>
 </div>
+
+<!-- 🎵 Music -->
+<audio id="music" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"></audio>
 
 <script>
-// Typing Effect
-const lines = [
-  "I know I hurt you...",
-  "I didn’t mean to lose you...",
-  "I’m really sorry..."
-];
 
-let i = 0;
-function typeLine() {
-  if (i < lines.length) {
-    document.getElementById("text" + (i+1)).innerHTML = lines[i];
-    i++;
-    setTimeout(typeLine, 1500);
-  }
-}
-typeLine();
+// Show intro text smoothly
+setTimeout(() => {
+  document.querySelectorAll("#intro .fade").forEach(el => el.classList.add("show"));
+}, 500);
 
-// Show Birthday Section
-function showBirthday() {
-  document.getElementById("apology").style.display = "none";
+// Start Birthday
+function startBirthday() {
+  document.getElementById("music").play();
+
+  document.getElementById("intro").style.display = "none";
   document.getElementById("birthday").style.display = "flex";
 
   setTimeout(() => {
-    document.querySelectorAll(".fade").forEach(el => {
-      el.classList.add("show");
-    });
+    document.querySelectorAll("#birthday .fade").forEach(el => el.classList.add("show"));
   }, 500);
 
-  startConfetti();
+  startHearts();
 }
 
-// Confetti Effect
-function startConfetti() {
-  for (let i = 0; i < 50; i++) {
-    let div = document.createElement("div");
-    div.classList.add("confetti");
-    div.style.left = Math.random() * 100 + "vw";
-    div.style.animationDuration = (Math.random() * 3 + 2) + "s";
-    document.body.appendChild(div);
-  }
+// Floating hearts
+function startHearts() {
+  setInterval(() => {
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+  }, 300);
 }
+
+// Custom Name
+let name = prompt("Enter Name:");
+if(name){
+  document.getElementById("nameText").innerText = "Happy Birthday " + name + " ❤️";
+}
+
 </script>
 
 </body>
