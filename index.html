@@ -55,19 +55,25 @@ body {
   transition: opacity 1.5s ease, transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* 🎬 DARK CINEMATIC INTRO */
+/* 🎬 INTRO WITH BROWN & CREAM STRIPES */
 #intro {
-  background: radial-gradient(circle at center, #1a0505 0%, #000000 100%);
+  background: repeating-linear-gradient(
+    45deg,
+    #f5f0e6,
+    #f5f0e6 25px,
+    #6b4f3b 25px,
+    #6b4f3b 50px
+  );
   z-index: 10;
 }
 
 /* LUXURY GLASS EFFECT */
 .glass {
   backdrop-filter: blur(15px);
-  background: rgba(20, 0, 0, 0.4);
+  background: rgba(15, 5, 5, 0.85); /* Made slightly darker so text is readable over the bright cream */
   padding: 40px 25px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 51, 51, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0,0,0,0.8);
   width: 90%;
 }
@@ -109,7 +115,7 @@ p {
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid #4a0000;
+  border-bottom: 1px solid #6b4f3b;
   color: white;
   text-align: center;
   font-size: 1.2rem;
@@ -122,14 +128,13 @@ p {
 }
 
 .name-input:focus {
-  border-bottom: 1px solid #ff3333;
-  box-shadow: 0 10px 10px -10px rgba(255, 51, 51, 0.5);
+  border-bottom: 1px solid #ffcccc;
 }
 
 /* GLOWING BUTTON */
 button {
   padding: 14px 35px;
-  border: 1px solid #4a0000;
+  border: 1px solid #6b4f3b;
   border-radius: 30px;
   background: transparent;
   color: #ffcccc;
@@ -143,15 +148,19 @@ button {
 }
 
 button:hover {
-  background: #2a0000;
-  border-color: #ff3333;
-  box-shadow: 0 0 20px rgba(255, 51, 51, 0.3), inset 0 0 10px rgba(255, 51, 51, 0.1);
+  background: #6b4f3b;
   color: #fff;
 }
 
-/* BIRTHDAY SECTION */
+/* BIRTHDAY SECTION WITH DARK DIAGONAL STRIPES */
 #birthday {
-  background: linear-gradient(180deg, #050505 0%, #1a0505 50%, #050505 100%);
+  background: repeating-linear-gradient(
+    45deg,
+    #050505,
+    #050505 25px,
+    #1a0505 25px,
+    #1a0505 50px
+  );
   transform: translateY(20px) scale(0.95);
   opacity: 0;
   pointer-events: none;
@@ -295,32 +304,26 @@ function start() {
 
 // Cinematic Emoji Effects
 function startEffects() {
-  // Array of party and birthday emojis
   const emojis = ['🎉', '🎂', '🥳', '🎁', '🎈', '✨', '🥂', '🎊'];
   
   setInterval(() => {
     let p = document.createElement("div");
     p.className = "emoji-particle";
     
-    // Pick a random emoji
     p.innerText = emojis[Math.floor(Math.random() * emojis.length)];
     
-    // Randomize size between 20px and 35px
     let size = Math.random() * 15 + 20; 
     p.style.fontSize = size + "px";
     
-    // Randomize horizontal starting position
     p.style.left = Math.random() * 100 + "%";
     
-    // Randomize float duration (between 4s and 7s)
     let duration = Math.random() * 3 + 4; 
     p.style.animationDuration = duration + "s";
     
     document.querySelector(".mobile-wrapper").appendChild(p);
     
-    // Clean up DOM after animation completes
     setTimeout(() => p.remove(), duration * 1000);
-  }, 250); // Spawns a new emoji every 250ms for an "everywhere" effect
+  }, 250);
 }
 </script>
 
