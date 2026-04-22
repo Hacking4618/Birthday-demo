@@ -5,218 +5,307 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For You ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-  font-family:'Poppins',sans-serif;
-  background:black;
-  color:white;
-  overflow:hidden;
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #000;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* 📱 9:16 Mobile-First Container */
+.mobile-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px; /* Limits width on desktop */
+  height: 100vh;
+  max-height: 800px;
+  aspect-ratio: 9/16;
+  background: #050505;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(138, 3, 3, 0.15); /* Subtle dark red ambient glow */
 }
 
 /* Section Base */
-.section{
-  position:absolute;
-  width:100%;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  text-align:center;
-  padding:20px;
-  transition:1.2s ease;
+.section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 30px;
+  transition: opacity 1.5s ease, transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* DARK INTRO (Apology style look) */
-#intro{
-  background:linear-gradient(135deg, #000000, #1c1c1c, #3e2c23);
+/* 🎬 DARK CINEMATIC INTRO */
+#intro {
+  background: radial-gradient(circle at center, #1a0505 0%, #000000 100%);
+  z-index: 10;
 }
 
-/* GLASS EFFECT */
-.glass{
-  backdrop-filter: blur(10px);
-  background: rgba(255,255,255,0.05);
-  padding:25px;
-  border-radius:20px;
+/* LUXURY GLASS EFFECT */
+.glass {
+  backdrop-filter: blur(15px);
+  background: rgba(20, 0, 0, 0.4);
+  padding: 40px 25px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 51, 51, 0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  width: 90%;
 }
 
-/* BUTTON */
-button{
-  margin-top:20px;
-  padding:12px 28px;
-  border:none;
-  border-radius:30px;
-  background:#6b4f3b;
-  color:white;
-  cursor:pointer;
+/* TYPOGRAPHY */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-style: italic;
+  color: #ffcccc;
+  text-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
+  line-height: 1.2;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #e6e6e6;
+}
+
+p {
+  margin-top: 15px;
+  font-size: 0.95rem;
+  color: #a3a3a3;
+  letter-spacing: 0.5px;
+}
+
+/* CUSTOM INPUT (Replaces prompt) */
+.name-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #4a0000;
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: 'Playfair Display', serif;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.name-input:focus {
+  border-bottom: 1px solid #ff3333;
+  box-shadow: 0 10px 10px -10px rgba(255, 51, 51, 0.5);
+}
+
+/* GLOWING BUTTON */
+button {
+  padding: 14px 35px;
+  border: 1px solid #4a0000;
+  border-radius: 30px;
+  background: transparent;
+  color: #ffcccc;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+button:hover {
+  background: #2a0000;
+  border-color: #ff3333;
+  box-shadow: 0 0 20px rgba(255, 51, 51, 0.3), inset 0 0 10px rgba(255, 51, 51, 0.1);
+  color: #fff;
 }
 
 /* BIRTHDAY SECTION */
-#birthday{
-  background:linear-gradient(135deg,#f5f0e6,#d2b48c,#3e2c23);
-  color:#3e2c23;
-  transform:translateY(100%);
+#birthday {
+  background: linear-gradient(180deg, #050505 0%, #1a0505 50%, #050505 100%);
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
 }
 
-/* HEADINGS */
-h1{
-  font-family:'Playfair Display',serif;
-  font-size:3rem;
-}
-
-p{
-  margin-top:10px;
+#birthday.active {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: all;
 }
 
 /* FADE ANIMATION */
-.fade{
-  opacity:0;
-  transform:translateY(20px);
-  transition:1s;
+.fade {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: 1.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
-.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* GALLERY */
-.gallery{
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-  margin-top:20px;
-}
-.gallery img{
-  height:180px;
-  border-radius:15px;
+.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* HEARTS */
-.heart{
-  position:fixed;
-  bottom:-10px;
-  font-size:18px;
-  animation:float 5s linear infinite;
+/* VERTICAL GALLERY */
+.gallery {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  margin-top: 30px;
+  padding-bottom: 10px;
+  width: 100%;
+  scrollbar-width: none; /* Hide scrollbar for clean look */
 }
-@keyframes float{
-  to{
-    transform:translateY(-100vh);
-    opacity:0;
-  }
+.gallery::-webkit-scrollbar {
+  display: none;
 }
 
-/* CONFETTI */
-.confetti{
-  position:fixed;
-  width:8px;
-  height:8px;
-  background:#6b4f3b;
-  top:-10px;
-  animation:fall 4s linear infinite;
+.gallery img {
+  height: 220px;
+  width: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  filter: grayscale(20%) contrast(110%); /* Adds a moody cinematic feel */
 }
-@keyframes fall{
-  to{ transform:translateY(100vh); }
+
+/* FLOATING EMBERS / PETALS */
+.particle {
+  position: absolute;
+  background: radial-gradient(circle, #ff3333 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatUp linear forwards;
+  opacity: 0.6;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+  20% { opacity: 0.8; }
+  100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
 }
 
 </style>
 </head>
-
 <body>
 
-<!-- 🎬 DARK INTRO -->
-<div id="intro" class="section">
-  <div class="glass">
-    <h2 class="fade">Close your eyes for a second...</h2>
-    <h2 class="fade">This is something special for you ❤️</h2>
-    <button onclick="start()">Tap to Open</button>
-  </div>
-</div>
-
-<!-- 🎂 BIRTHDAY -->
-<div id="birthday" class="section">
-  <h1 class="fade" id="nameText">Happy Birthday ❤️</h1>
-  <p class="fade">A day made just for you ✨</p>
-
-  <div class="gallery fade">
-    <img src="https://via.placeholder.com/200">
-    <img src="https://via.placeholder.com/200">
-    <img src="https://via.placeholder.com/200">
+<div class="mobile-wrapper">
+  
+  <div id="intro" class="section">
+    <div class="glass">
+      <h2 class="fade">Close your eyes...</h2>
+      <p class="fade" style="margin-bottom: 10px;">This is something special.</p>
+      
+      <input type="text" id="nameInput" class="name-input fade" placeholder="Who is this for?" autocomplete="off">
+      
+      <button class="fade" onclick="start()" style="margin-top: 10px;">Tap to Open</button>
+    </div>
   </div>
 
-  <p class="fade">You deserve everything beautiful 💖</p>
+  <div id="birthday" class="section">
+    <h1 class="fade" id="nameText">Happy Birthday</h1>
+    <p class="fade">A moment crafted entirely for you.</p>
+
+    <div class="gallery fade">
+      <img src="https://via.placeholder.com/140x220/1a0505/ffcccc?text=Photo+1" alt="Memory 1">
+      <img src="https://via.placeholder.com/140x220/2a0000/ffcccc?text=Photo+2" alt="Memory 2">
+      <img src="https://via.placeholder.com/140x220/1a0505/ffcccc?text=Photo+3" alt="Memory 3">
+    </div>
+
+    <p class="fade" style="margin-top: 25px;">You deserve every beautiful thing in this world. 🤍</p>
+  </div>
+
 </div>
 
-<!-- MUSIC -->
 <audio id="music" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"></audio>
 
 <script>
-
-// fade intro text
-setTimeout(()=>{
-  document.querySelectorAll("#intro .fade").forEach(el=>{
-    el.classList.add("show");
-  });
-},500);
-
-// start transition
-function start(){
-  document.getElementById("music").play();
-
-  // slide up effect
-  document.getElementById("birthday").style.transform = "translateY(0)";
-
-  setTimeout(()=>{
-    document.getElementById("intro").style.opacity="0";
-  },300);
-
-  setTimeout(()=>{
-    document.getElementById("intro").style.display="none";
-
-    document.querySelectorAll("#birthday .fade").forEach(el=>{
-      el.classList.add("show");
+// Fade intro text on load
+window.onload = () => {
+  setTimeout(() => {
+    document.querySelectorAll("#intro .fade").forEach((el, index) => {
+      setTimeout(() => el.classList.add("show"), index * 300); // Staggered fade in
     });
+  }, 300);
+};
 
-    startEffects();
-  },1000);
-}
-
-// effects
-function startEffects(){
-
-  // hearts
-  setInterval(()=>{
-    let h=document.createElement("div");
-    h.className="heart";
-    h.innerHTML="❤️";
-    h.style.left=Math.random()*100+"vw";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),5000);
-  },300);
-
-  // confetti
-  for(let i=0;i<40;i++){
-    let c=document.createElement("div");
-    c.className="confetti";
-    c.style.left=Math.random()*100+"vw";
-    c.style.animationDuration=(Math.random()*3+2)+"s";
-    document.body.appendChild(c);
+// Start transition
+function start() {
+  const nameValue = document.getElementById("nameInput").value.trim();
+  
+  // Update name if provided
+  if (nameValue) {
+    document.getElementById("nameText").innerText = "Happy Birthday, " + nameValue;
   }
+
+  // Attempt to play audio
+  const audio = document.getElementById("music");
+  audio.volume = 0.6;
+  audio.play().catch(e => console.log("Audio autoplay blocked by browser"));
+
+  // Trigger cinematic transition
+  const intro = document.getElementById("intro");
+  const birthday = document.getElementById("birthday");
+
+  intro.style.opacity = "0";
+  intro.style.pointerEvents = "none";
+  
+  birthday.classList.add("active");
+
+  // Fade in birthday elements
+  setTimeout(() => {
+    document.querySelectorAll("#birthday .fade").forEach((el, index) => {
+      setTimeout(() => el.classList.add("show"), index * 400);
+    });
+    startEffects();
+  }, 800);
 }
 
-// name input
-let name=prompt("Enter Name:");
-if(name){
-  document.getElementById("nameText").innerText="Happy Birthday "+name+" ❤️";
+// Cinematic particle effects (Embers/Red Petals instead of standard confetti)
+function startEffects() {
+  setInterval(() => {
+    let p = document.createElement("div");
+    p.className = "particle";
+    
+    // Randomize size and position
+    let size = Math.random() * 8 + 3; // 3px to 11px
+    p.style.width = size + "px";
+    p.style.height = size + "px";
+    p.style.left = Math.random() * 100 + "%";
+    
+    // Randomize animation duration
+    let duration = Math.random() * 4 + 4; // 4s to 8s
+    p.style.animationDuration = duration + "s";
+    
+    document.querySelector(".mobile-wrapper").appendChild(p);
+    
+    // Clean up DOM
+    setTimeout(() => p.remove(), duration * 1000);
+  }, 400);
 }
-
 </script>
 
 </body>
